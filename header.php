@@ -52,7 +52,14 @@
     <section id="blog" style="background-image: url('<?php header_image(); ?>');">
       <div class="dark-overlay vision">
         <div class="centered vision-border wow bounceIn">
-          <h4>Welcome to</h4>
+          <?php
+            $subheadtitle = get_theme_mod('rokophotolite_subhead_title');
+            if(!empty($subheadtitle)) {
+                echo '<h4>'.$subheadtitle.'</h4>';
+            } else {
+                echo '<h4>'. __( 'Welcome to', 'rokophotolite' ) .'</h4>';
+            }
+          ?>
           <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h2>
           <?php get_template_part( 'loop-meta' ); //Loads the loop-meta.php template. ?>
         </div>

@@ -230,8 +230,13 @@ function rokophotolite_customize_register($wp_customize)
         'title' => __('Site Logo', 'rokophotolite'),
     ));
     
-    $wp_customize->add_section('rokophotolite_social_section', array(
+    $wp_customize->add_section('rokophotolite_subhead_section', array(
         'priority' => 50,
+        'title' => __('Sub-Header', 'rokophotolite'),
+    ));
+
+    $wp_customize->add_section('rokophotolite_social_section', array(
+        'priority' => 60,
         'title' => __('Social Links', 'rokophotolite'),
     ));
 
@@ -247,6 +252,19 @@ function rokophotolite_customize_register($wp_customize)
         'priority' => 5,
         'settings' => 'rokophotolite_logo_image'
     )));
+
+    $wp_customize->add_setting('rokophotolite_subhead_title', array(
+        'default' => 'Welcome to',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_text_field'
+    ));
+
+    $wp_customize->add_control('rokophotolite_subhead_title', array(
+        'label' => __('Sub-Header Title', 'rokophotolite'),
+        'section' => 'rokophotolite_subhead_section',
+        'priority' => 5,
+        'settings' => 'rokophotolite_subhead_title'
+    ));
 
     $wp_customize->add_setting('rokophotolite_facebook_link', array(
         'default' => '#',
