@@ -29,7 +29,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>              
           </button>
-          <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php $logourl = get_theme_mod('rokophotolite_logo_image'); if(!empty($logourl)) { echo $logourl; } else { echo get_template_directory_uri().'/img/logo.png';} ?>" alt="logo"></a>
+          <?php
+          $logourl = get_theme_mod('rokophotolite_logo_image');
+          if(!empty($logourl)) {
+            echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><img src="'.$logourl.'" alt="logo"></a>';
+          } else {
+            echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><h4>'.get_bloginfo( 'name' ).'</h4></a>';
+          }
+          ?>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,11 +60,9 @@
       <div class="dark-overlay vision">
         <div class="centered vision-border wow bounceIn">
           <?php
-            $subheadtitle = get_theme_mod('rokophotolite_subhead_title');
+            $subheadtitle = get_theme_mod('rokophotolite_subhead_title',__( 'Welcome to', 'rokophotolite' ));
             if(!empty($subheadtitle)) {
                 echo '<h4>'.$subheadtitle.'</h4>';
-            } else {
-                echo '<h4>'. __( 'Welcome to', 'rokophotolite' ) .'</h4>';
             }
           ?>
           <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h2>
