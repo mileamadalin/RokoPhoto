@@ -382,5 +382,18 @@ function rokophotolite_customize_register($wp_customize)
         'priority' => 45,
         'settings' => 'rokophotolite_instagram_link'
     ));
+
+    $wp_customize->add_setting('rokophotolite_footer_copyrights', array(
+        'default' => '© Awesome Photography. All Rights Reserved',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_text_field'
+    ));
+
+    $wp_customize->add_control('rokophotolite_footer_copyrights', array(
+        'label' => __('Footer Copyrights', 'rokophotolite'),
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 50,
+        'settings' => 'rokophotolite_footer_copyrights'
+    ));
 }
 add_action('customize_register', 'rokophotolite_customize_register');

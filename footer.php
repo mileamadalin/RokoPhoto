@@ -54,7 +54,7 @@
     </section>
 
     <div id="footer-nav">  <!-- Copyright notice on the bottom -->
-      <span>© <?php echo date("Y");  _e( 'Awesome Photography. All Rights Reserved.', 'rokophotolite' ); ?></span>
+      <span><?php $copyright = get_theme_mod('rokophotolite_footer_copyrights', __( '© Awesome Photography. All Rights Reserved', 'rokophotolite' )); if(!empty($copyright)) { echo $copyright; } ?> <br/> <a href="https://themeisle.com/themes/rokophoto-lite/" target="_blank" rel="nofollow"><?php _e( 'RokoPhoto Lite', 'rokophotolite' ); ?></a> <?php _e(' powered by','rokophotolite'); ?> <a href="https://wordpress.org/" target="_blank" rel="nofollow"> WordPress</a></span>
     </div>
 
 <?php wp_footer(); ?>
