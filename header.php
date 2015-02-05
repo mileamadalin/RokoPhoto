@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>              
           </button>
           <?php
-          $logourl = get_theme_mod('rokophotolite_logo_image');
+          $logourl = get_theme_mod('rokophotolite_logo_image', get_template_directory_uri().'/img/logo.png');
           if(!empty($logourl)) {
             echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><img src="'.$logourl.'" alt="logo"></a>';
           } else {
