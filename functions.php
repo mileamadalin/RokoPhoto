@@ -235,9 +235,9 @@ function rokophotolite_customize_register($wp_customize)
         'title' => __('Sub-Header', 'rokophotolite'),
     ));
 
-    $wp_customize->add_section('rokophotolite_social_section', array(
+    $wp_customize->add_section('rokophotolite_footer_section', array(
         'priority' => 60,
-        'title' => __('Social Links', 'rokophotolite'),
+        'title' => __('Footer', 'rokophotolite'),
     ));
 
     $wp_customize->add_setting('rokophotolite_logo_image', array(
@@ -266,6 +266,32 @@ function rokophotolite_customize_register($wp_customize)
         'settings' => 'rokophotolite_subhead_title'
     ));
 
+    $wp_customize->add_setting('rokophotolite_social_label', array(
+        'default' => 'To get the latest update of me and my works',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_text_field'
+    ));
+
+    $wp_customize->add_control('rokophotolite_social_label', array(
+        'label' => __('Social Box Label', 'rokophotolite'),
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 5,
+        'settings' => 'rokophotolite_social_label'
+    ));
+
+    $wp_customize->add_setting('rokophotolite_social_text', array(
+        'default' => 'Follow Me',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_text_field'
+    ));
+
+    $wp_customize->add_control('rokophotolite_social_text', array(
+        'label' => __('Social Box Text', 'rokophotolite'),
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 10,
+        'settings' => 'rokophotolite_social_text'
+    ));
+
     $wp_customize->add_setting('rokophotolite_facebook_link', array(
         'default' => '#',
         'capability' => 'edit_theme_options',
@@ -274,8 +300,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_facebook_link', array(
         'label' => __('Facebook URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 5,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 15,
         'settings' => 'rokophotolite_facebook_link'
     ));
     
@@ -287,8 +313,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_twitter_link', array(
         'label' => __('Twitter URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 10,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 20,
         'settings' => 'rokophotolite_twitter_link'
     ));
     
@@ -300,8 +326,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_behance_link', array(
         'label' => __('Behance URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 15,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 25,
         'settings' => 'rokophotolite_behance_link'
     ));
     
@@ -313,8 +339,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_dribbble_link', array(
         'label' => __('Dribbble URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 20,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 30,
         'settings' => 'rokophotolite_dribbble_link'
     ));
     
@@ -326,8 +352,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_flickr_link', array(
         'label' => __('Flickr URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 25,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 35,
         'settings' => 'rokophotolite_flickr_link'
     ));
     
@@ -339,8 +365,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_googleplus_link', array(
         'label' => __('Google + URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 30,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 40,
         'settings' => 'rokophotolite_googleplus_link'
     ));
     
@@ -352,8 +378,8 @@ function rokophotolite_customize_register($wp_customize)
 
     $wp_customize->add_control('rokophotolite_instagram_link', array(
         'label' => __('Instagram URL', 'rokophotolite'),
-        'section' => 'rokophotolite_social_section',
-        'priority' => 35,
+        'section' => 'rokophotolite_footer_section',
+        'priority' => 45,
         'settings' => 'rokophotolite_instagram_link'
     ));
 }
