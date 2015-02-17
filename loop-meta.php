@@ -4,9 +4,17 @@
 
     <?php elseif ( is_single() ) : ?>
     
-        <?php $category = get_the_category(); ?>
+	<?php if ( has_category()) : ?>
 
-    	<h6><?php printf( __( 'Home / <a href="%2$s">%1$s</a> / %3$s', 'rokophotolite' ), $category[0]->name, get_category_link( $category[0]->term_id ), get_the_title() ); ?></h6>
+		<?php $category = get_the_category(); ?>
+
+		<h6><?php printf( __( 'Home / <a href="%2$s">%1$s</a> / %3$s', 'rokophoto' ), $category[0]->name, get_category_link( $category[0]->term_id ), get_the_title() ); ?></h6>
+
+	<?php else: ?>
+
+		<h6><?php printf( __( 'Home / %1$s', 'rokophoto' ), get_the_title() ); ?></h6>
+
+	<?php endif; ?>
 
     <?php elseif ( is_page() ) : ?>
     
