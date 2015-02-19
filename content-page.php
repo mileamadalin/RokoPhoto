@@ -6,10 +6,11 @@
                             <?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
                                 <?php the_post_thumbnail( 'full', array( 'class' => "img-responsive")); ?>
                             <?php endif; ?>
-                            <?php the_content(); ?>
-                            <?php wp_link_pages(); ?>
+							<div class="post-content">
+								<?php the_content(); ?>
+								<?php wp_link_pages(); ?>
+							</div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="divider"></div>
                 </div>

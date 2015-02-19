@@ -10,7 +10,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('frontpage'); ?>>
     <!-- Preloader
     ================================================== -->
     <div id="preloader">
@@ -53,20 +53,3 @@
         </div><!-- End navbar-collapse -->
       </div><!-- End container -->
     </nav>
-
-    <!-- Blog
-    ================================================== -->
-    <section id="blog" style="background-image: url('<?php header_image(); ?>');">
-      <div class="dark-overlay vision">
-        <div class="centered vision-border wow bounceIn">
-          <?php
-            $subheadtitle = get_theme_mod('rokophoto_subhead_title',__( 'Welcome to', 'rokophoto' ));
-            if(!empty($subheadtitle)) {
-                echo '<h4>'.$subheadtitle.'</h4>';
-            }
-          ?>
-          <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h2>
-          <?php get_template_part( 'loop-meta' ); //Loads the loop-meta.php template. ?>
-        </div>
-      </div>
-    </section>
