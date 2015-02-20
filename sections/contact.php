@@ -35,28 +35,28 @@ $rokophoto_contact_email = get_theme_mod('rokophoto_contact_email','support@code
               <div class="row">
                 <div class="col-md-6"> <!-- 6 column grid left form -->
                   <div class="form-group"> <!-- Your name input -->
-                    <input type="text" autocomplete="off" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                    <input type="text" autocomplete="off" class="form-control" placeholder="<?php __('Your Name *','rokophoto'); ?>" id="name" required data-validation-required-message="<?php __('Please enter your name.'); ?>">
                     <p class="help-block text-danger"></p>
                   </div> 
                   <div class="form-group"> <!-- Your email input -->
-                    <input type="email" autocomplete="off" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">                            
+                    <input type="email" autocomplete="off" class="form-control" placeholder="<?php __('Your Email *','rokophoto'); ?>" id="email" required data-validation-required-message="<?php __('Please enter your email address.','rokophoto'); ?>">                            
                     <p class="help-block text-danger"></p>
                   </div>
                   <div class="form-group"> <!-- Your phone no. input -->
-                    <input type="tel" autocomplete="off" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                    <input type="tel" autocomplete="off" class="form-control" placeholder="<?php _e('Your Phone *','rokophoto'); ?>" id="phone" required data-validation-required-message="<?php __('Please enter your phone number.','rokophoto'); ?>">
                     <p class="help-block text-danger"></p>
                   </div>
                 </div> <!-- End 6 column grid left form -->
                 <div class="col-md-6"> <!-- 6 column grid right form-->
                   <div class="form-group"> <!-- Your message input -->
-                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                    <textarea class="form-control" placeholder="<?php __('Your Message *','rokophoto'); ?>" id="message" required data-validation-required-message="<?php __('Please enter a message.','rokophoto'); ?>"></textarea>
                     <p class="help-block text-danger"></p>
                   </div>
                 </div> <!-- End 6 column grid right form-->
                 <div class="clearfix"></div>
                 <div class="col-lg-12 text-center">
                   <div id="success"></div>
-                  <button type="submit" class="btn btn-send">Send Message</button> <!-- Send button -->
+                  <button type="submit" class="btn btn-send"><?php __('Send Message','rokophoto'); ?></button> <!-- Send button -->
                 </div>
               </div>
             </form> <!-- End contact form -->
