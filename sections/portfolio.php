@@ -94,5 +94,5 @@ $rokophoto_portfolio_count = get_theme_mod('rokophoto_portfolio_count', 9);
 			</figcaption> <!-- End caption -->   
 		</figure> <!-- End portfolio -->
 	
-	<?php endif; ?>
+	<?php endif; wp_reset_postdata(); ?>
     </section> <!-- End Portfolio Section -->
