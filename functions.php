@@ -84,7 +84,7 @@ function rokophoto_scripts() {
 	
 	$site_parameters = array(
 		'contact_script' => get_template_directory_uri() . '/inc/submit.php',
-		'email_script' => get_theme_mod('rokophoto_contact_email')
+		'email_script' => get_theme_mod('rokophoto_contact_email', get_bloginfo('admin_email'))
 	);
 
 	wp_localize_script( 'rokophoto_contact', 'SiteParameters', $site_parameters );

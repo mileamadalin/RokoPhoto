@@ -2,7 +2,7 @@
 $logourl = get_theme_mod('rokophoto_logo_image', get_template_directory_uri().'/img/logo.png');
 $rokophoto_about_website = get_theme_mod('rokophoto_about_website',__( 'www.themeisle.com', 'rokophoto' ));
 $rokophoto_contact_heading = get_theme_mod('rokophoto_contact_heading',__( 'WORK w/ ME', 'rokophoto' ));
-$rokophoto_contact_email = get_theme_mod('rokophoto_contact_email','support@codeinwp.com');
+$rokophoto_contact_email = get_theme_mod('rokophoto_contact_email', get_bloginfo('admin_email'));
 ?>
     <!-- Footer Section
     ================================================== -->
