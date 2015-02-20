@@ -19,40 +19,38 @@
 
     <!-- Navigation
     ================================================== -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only"><?php _e( 'Toggle Navigation', 'rokophoto' ); ?></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>              
-          </button>
-          <?php
-          $logourl = get_theme_mod('rokophoto_logo_image', get_template_directory_uri().'/img/logo.png');
-          if(!empty($logourl)) {
-            echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><img src="'.$logourl.'" alt="logo"></a>';
-          } else {
-            echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><h4>'.get_bloginfo( 'name' ).'</h4></a>';
-          }
-          ?>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <?php
-                wp_nav_menu(array(
-                'theme_location' => 'primary',
-                'menu' => 'Primary Menu',
-                'container' => false,
-                'fallback_cb' => 'rokophoto_new_setup',
-                'items_wrap' => '<ul class="nav navbar-nav navbar-right">%3$s</ul>'
-                ));
-            ?> 
-        </div><!-- End navbar-collapse -->
-      </div><!-- End container -->
-    </nav>
+    <nav id="site-navigation" role="navigation" class="main-navigation navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header page-scroll">
+				<button type="button" class="menu-toggle navbar-toggle" aria-controls="menu" aria-expanded="false">
+					<span class="sr-only"><?php _e( 'Toggle Navigation', 'rokophoto' ); ?></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>              
+				</button>
+				<?php
+				  $logourl = get_theme_mod('rokophoto_logo_image', get_template_directory_uri().'/img/logo.png');
+				  if(!empty($logourl)) {
+					echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><img src="'.$logourl.'" alt="logo"></a>';
+				  } else {
+					echo '<a class="navbar-brand" href="'.esc_url( home_url( '/' ) ).'"><h4>'.get_bloginfo( 'name' ).'</h4></a>';
+				  }
+				 ?>
+				 
+				
+			</div>	 
+			
+			<?php
+					wp_nav_menu(array(
+					'theme_location' => 'primary',
+					'menu' => 'Primary Menu',
+					'container' => false,
+					'fallback_cb' => 'rokophoto_new_setup',
+					'items_wrap' => '<ul class="nav navbar-nav navbar-right">%3$s</ul>'
+					));
+			 ?>
+		</div>
+	</nav><!-- #site-navigation -->
 
     <!-- Blog
     ================================================== -->

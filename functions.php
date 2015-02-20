@@ -66,6 +66,7 @@ function rokophoto_scripts() {
     wp_enqueue_script( 'rokophoto_modernizr', get_template_directory_uri() . '/js/modernizr.custom.js');
 
     wp_enqueue_script( 'rokophoto_jquery-min', get_template_directory_uri() . '/js/jquery.min.js','','',true);
+	wp_enqueue_script( 'rdocia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
     wp_enqueue_script( 'rokophoto_bootstrap', get_template_directory_uri() . '/js/bootstrap.js','','',true);
     wp_enqueue_script( 'rokophoto_wow', get_template_directory_uri() . '/js/wow.min.js','','',true);
     wp_enqueue_script( 'rokophoto_smooth_scroll', get_template_directory_uri() . '/js/SmoothScroll.js','','',true);
