@@ -45,6 +45,9 @@ function rokophoto_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'rokophoto' ),
 	) );
+	
+	/* woocommerce support */
+	add_theme_support( 'woocommerce' );
 
 }
 
