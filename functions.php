@@ -5,9 +5,9 @@
  * Happy Blogging
 */
 
-include (TEMPLATEPATH . '/inc/customizer.php');
+require get_template_directory() . '/inc/customizer.php';
 
-include (TEMPLATEPATH . '/inc/portfolio.php');
+require get_template_directory() . '/inc/portfolio.php';
 
 function rokophoto_setup() {
     
@@ -15,6 +15,8 @@ function rokophoto_setup() {
     if (!isset($content_width)) {
         $content_width = 750;
     }
+	
+	load_theme_textdomain( 'rokophoto', get_template_directory() . '/languages' );
 
     // Takes care of the <title> tag.
     add_theme_support( 'title-tag' );
