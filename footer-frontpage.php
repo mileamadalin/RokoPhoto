@@ -1,7 +1,7 @@
     <!-- About Section
     ================================================== -->
-    <section id="bsocials">
-      <div class="container wow bounceIn" data-wow-delay="0.8s">
+    <section id="socials">
+      <div class="container wow bounceIn" data-wow-delay="0.4s">
         <?php
           $socialtext = get_theme_mod('rokophoto_social_text', __( 'Follow Me', 'rokophoto' ));
           $sociallabel = get_theme_mod('rokophoto_social_label', __( 'To get the latest update of me and my works', 'rokophoto' ));
@@ -54,7 +54,7 @@
     </section>
 
     <div id="footer-nav">  <!-- Copyright notice on the bottom -->
-      <span><?php $copyright = get_theme_mod('rokophoto_footer_copyrights', __( 'Awesome Photography. All Rights Reserved', 'rokophoto' )); if(!empty($copyright)) { echo $copyright; } ?> <br/> <a href="https://themeisle.com/themes/rokophoto/" target="_blank" rel="nofollow"><?php _e( 'RokoPhoto', 'rokophoto' ); ?></a> <?php _e(' powered by','rokophoto'); ?> <a href="https://wordpress.org/" target="_blank" rel="nofollow"> WordPress</a></span>
+      <span><?php $copyright = get_theme_mod('rokophoto_footer_copyrights', __( 'Awesome Photography. All Rights Reserved', 'rokophoto' )); if(!empty($copyright)) { echo $copyright; } ?> <br/> <a href="https://themeisle.com/themes/rokophoto-lite/" target="_blank" rel="nofollow"><?php _e( 'RokoPhoto Lite', 'rokophoto' ); ?></a> <?php _e(' powered by','rokophoto'); ?> <a href="https://wordpress.org/" target="_blank" rel="nofollow"> WordPress</a></span>
     </div>
 
 <?php wp_footer(); ?>

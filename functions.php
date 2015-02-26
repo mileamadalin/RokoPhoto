@@ -5,12 +5,18 @@
  * Happy Blogging
 */
 
-function rokophotolite_setup() {
+require get_template_directory() . '/inc/customizer.php';
+
+require get_template_directory() . '/inc/portfolio.php';
+
+function rokophoto_setup() {
     
     global $content_width;
     if (!isset($content_width)) {
         $content_width = 750;
     }
+	
+	load_theme_textdomain( 'rokophoto', get_template_directory() . '/languages' );
 
     // Takes care of the <title> tag.
     add_theme_support( 'title-tag' );
@@ -37,49 +43,63 @@ function rokophotolite_setup() {
 
     // This theme uses wp_nav_menu().
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'rokophotolite' ),
+		'primary' => __( 'Primary Menu', 'rokophoto' ),
 	) );
+	
+	/* woocommerce support */
+	add_theme_support( 'woocommerce' );
+
 }
 
-add_action( 'after_setup_theme', 'rokophotolite_setup' );
+add_action( 'after_setup_theme', 'rokophoto_setup' );
 
 // Registering and enqueuing scripts/stylesheets to header/footer.
-function rokophotolite_scripts() {
-    wp_register_style( 'rokophotolite_style', get_stylesheet_uri());
-	wp_register_style( 'rokophotolite_bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
-	wp_register_style( 'rokophotolite_animate', get_template_directory_uri() . '/css/animate.css');
-	wp_register_style( 'rokophotolite_font_awesome', get_template_directory_uri() . '/css/font-awesome.css');
-    wp_register_style( 'rokophotolite_responsiveness', get_template_directory_uri() . '/css/responsiveness.css');
+function rokophoto_scripts() {
+    wp_register_style( 'rokophoto_style', get_stylesheet_uri());
+	wp_register_style( 'rokophoto_bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
+	wp_register_style( 'rokophoto_animate', get_template_directory_uri() . '/css/animate.css');
+	wp_register_style( 'rokophoto_font_awesome', get_template_directory_uri() . '/css/font-awesome.css');
+    wp_register_style( 'rokophoto_responsiveness', get_template_directory_uri() . '/css/responsiveness.css');
 
-	wp_enqueue_style( 'rokophotolite_bootstrap' );
-	wp_enqueue_style( 'rokophotolite_animate' );
-	wp_enqueue_style( 'rokophotolite_font_awesome' );
-    wp_enqueue_style( 'rokophotolite_style' );
-	wp_enqueue_style( 'rokophotolite_responsiveness' );
+	wp_enqueue_style( 'rokophoto_bootstrap' );
+	wp_enqueue_style( 'rokophoto_animate' );
+	wp_enqueue_style( 'rokophoto_font_awesome' );
+    wp_enqueue_style( 'rokophoto_style' );
+	wp_enqueue_style( 'rokophoto_responsiveness' );
 
     if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
-    wp_enqueue_script( 'rokophotolite_modernizr', get_template_directory_uri() . '/js/modernizr.custom.js');
+    wp_enqueue_script( 'rokophoto_modernizr', get_template_directory_uri() . '/js/modernizr.custom.js');
 
-    wp_enqueue_script( 'rokophotolite_jquery-min', get_template_directory_uri() . '/js/jquery.min.js','','',true);
-    wp_enqueue_script( 'rokophotolite_bootstrap', get_template_directory_uri() . '/js/bootstrap.js','','',true);
-    wp_enqueue_script( 'rokophotolite_wow', get_template_directory_uri() . '/js/wow.min.js','','',true);
-    wp_enqueue_script( 'rokophotolite_smooth_scroll', get_template_directory_uri() . '/js/SmoothScroll.js','','',true);
-    wp_enqueue_script( 'rokophotolite_easing', get_template_directory_uri() . '/js/jquery.easing.min.js','','',true);
-    wp_enqueue_script( 'rokophotolite_animate_header', get_template_directory_uri() . '/js/cbpAnimatedHeader.js','','',true);
-    wp_enqueue_script( 'rokophotolite_classie', get_template_directory_uri() . '/js/classie.js','','',true);
-    wp_enqueue_script( 'rokophotolite_main', get_template_directory_uri() . '/js/main.js','','',true);
+    wp_enqueue_script( 'rokophoto_jquery-min', get_template_directory_uri() . '/js/jquery.min.js','','',true);
+	wp_enqueue_script( 'rdocia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+    wp_enqueue_script( 'rokophoto_bootstrap', get_template_directory_uri() . '/js/bootstrap.js','','',true);
+    wp_enqueue_script( 'rokophoto_wow', get_template_directory_uri() . '/js/wow.min.js','','',true);
+    wp_enqueue_script( 'rokophoto_smooth_scroll', get_template_directory_uri() . '/js/SmoothScroll.js','','',true);
+    wp_enqueue_script( 'rokophoto_easing', get_template_directory_uri() . '/js/jquery.easing.min.js','','',true);
+    wp_enqueue_script( 'rokophoto_animate_header', get_template_directory_uri() . '/js/cbpAnimatedHeader.js','','',true);
+    wp_enqueue_script( 'rokophoto_classie', get_template_directory_uri() . '/js/classie.js','','',true);
+    wp_enqueue_script( 'rokophoto_jqBootstrapValidation', get_template_directory_uri() . '/js/jqBootstrapValidation.js','','',true);
+    wp_enqueue_script( 'rokophoto_contact', get_template_directory_uri() . '/js/contact.js','','',true);
+    wp_enqueue_script( 'rokophoto_main', get_template_directory_uri() . '/js/main.js','','',true);
+	
+	$site_parameters = array(
+		'contact_script' => get_template_directory_uri() . '/inc/submit.php',
+		'email_script' => get_theme_mod('rokophoto_contact_email', get_bloginfo('admin_email'))
+	);
+
+	wp_localize_script( 'rokophoto_contact', 'SiteParameters', $site_parameters );
 }
 
-add_action( 'wp_enqueue_scripts', 'rokophotolite_scripts' );
+add_action( 'wp_enqueue_scripts', 'rokophoto_scripts' );
 
 // Adding IE-only scripts to header.
-function rokophotolite_ie () {
+function rokophoto_ie () {
     echo '<!--[if lt IE 9]>' . "\n";
     echo '<script src="'. get_template_directory_uri() . '/js/html5shiv.min.js"></script>' . "\n";
     echo '<script src="'. get_template_directory_uri() . '/js/respond.min.js"></script>' . "\n";
     echo '<![endif]-->' . "\n";
 }
-add_action('wp_head', 'rokophotolite_ie');
+add_action('wp_head', 'rokophoto_ie');
 
 /**
  * Menu fallback. Link to the menu editor if that is useful.
@@ -88,12 +108,12 @@ add_action('wp_head', 'rokophotolite_ie');
  * @return string
 */
 
-function rokophotolite_new_setup($args)
+function rokophoto_new_setup($args)
 {
     // see wp-includes/nav-menu-template.php for available arguments
 
 	extract($args);
-	$link = $link_before . '<a href="' . esc_url( home_url( '/' ) ) . '">' . $before . __( 'Home', 'rokophotolite' ) . $after . '</a>' . $link_after;
+	$link = $link_before . '<a href="' . esc_url( home_url( '/' ) ) . '">' . $before . __( 'Home', 'rokophoto' ) . $after . '</a>' . $link_after;
 
 	// We have a list
 
@@ -113,7 +133,7 @@ function rokophotolite_new_setup($args)
 	return $output;
 }
 
-function rokophotolite_pagination() {
+function rokophoto_pagination() {
 
     if( is_singular() )
 		return;
@@ -183,7 +203,7 @@ function rokophotolite_pagination() {
 }
 
 
-function rokophotolite_comment($comment, $args, $depth) {
+function rokophoto_comment($comment, $args, $depth) {
 $GLOBALS['comment'] = $comment;
 ?>
 <li <?php comment_class('comment even thread-even'); ?> id="comment-<?php comment_ID() ?>">
@@ -195,12 +215,12 @@ $GLOBALS['comment'] = $comment;
             <td class="comment-data">
                 <div class="comment-header">
                     <span class="comment-author"><?php printf(__('%s'), get_comment_author_link()) ?></span>
-                    <span class="comment-date"><?php echo get_comment_date(); ?> <?php _e('on', 'rokophotolite'); ?> <?php echo get_comment_time(); ?></span>
+                    <span class="comment-date"><?php echo get_comment_date(); ?> <?php _e('on', 'rokophoto'); ?> <?php echo get_comment_time(); ?></span>
                     <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
                 </div>
                 <div class="comment-body">
                     <?php if ($comment->comment_approved == '0') : ?>
-                        <em><?php _e('Your comment is awaiting moderation.', 'rokophotolite') ?></em><br />
+                        <em><?php _e('Your comment is awaiting moderation.', 'rokophoto') ?></em><br />
                     <?php endif; ?>
                     <?php comment_text(); ?>
                 </div>
@@ -210,7 +230,7 @@ $GLOBALS['comment'] = $comment;
 <?php
 }
 
-function rokophotolite_css() {
+function rokophoto_css() {
     if ( is_user_logged_in() ) {
 ?>
 <style>
@@ -221,179 +241,15 @@ function rokophotolite_css() {
 <?php
     }
 }
-add_action('wp_head', 'rokophotolite_css');
 
-function rokophotolite_customize_register($wp_customize)
-{
-    $wp_customize->add_section('rokophotolite_logo_section', array(
-        'priority' => 25,
-        'title' => __('Site Logo', 'rokophotolite'),
-    ));
-    
-    $wp_customize->add_section('rokophotolite_subhead_section', array(
-        'priority' => 50,
-        'title' => __('Sub-Header', 'rokophotolite'),
-    ));
+add_action('wp_head', 'rokophoto_css');
 
-    $wp_customize->add_section('rokophotolite_footer_section', array(
-        'priority' => 60,
-        'title' => __('Footer', 'rokophotolite'),
-    ));
-
-    $wp_customize->add_setting('rokophotolite_logo_image', array(
-        'default' => get_template_directory_uri().'/img/logo.png',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw',
-    ));
-
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'rokophotolite_logo_image', array(
-        'label' => __('Site Logo Image', 'rokophotolite'),
-        'section' => 'rokophotolite_logo_section',
-        'priority' => 5,
-        'settings' => 'rokophotolite_logo_image'
-    )));
-
-    $wp_customize->add_setting('rokophotolite_subhead_title', array(
-        'default' => 'Welcome to',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'sanitize_text_field'
-    ));
-
-    $wp_customize->add_control('rokophotolite_subhead_title', array(
-        'label' => __('Sub-Header Title', 'rokophotolite'),
-        'section' => 'rokophotolite_subhead_section',
-        'priority' => 5,
-        'settings' => 'rokophotolite_subhead_title'
-    ));
-
-    $wp_customize->add_setting('rokophotolite_social_label', array(
-        'default' => 'To get the latest update of me and my works',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'sanitize_text_field'
-    ));
-
-    $wp_customize->add_control('rokophotolite_social_label', array(
-        'label' => __('Social Box Label', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 5,
-        'settings' => 'rokophotolite_social_label'
-    ));
-
-    $wp_customize->add_setting('rokophotolite_social_text', array(
-        'default' => 'Follow Me',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'sanitize_text_field'
-    ));
-
-    $wp_customize->add_control('rokophotolite_social_text', array(
-        'label' => __('Social Box Text', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 10,
-        'settings' => 'rokophotolite_social_text'
-    ));
-
-    $wp_customize->add_setting('rokophotolite_facebook_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_facebook_link', array(
-        'label' => __('Facebook URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 15,
-        'settings' => 'rokophotolite_facebook_link'
-    ));
-    
-    $wp_customize->add_setting('rokophotolite_twitter_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_twitter_link', array(
-        'label' => __('Twitter URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 20,
-        'settings' => 'rokophotolite_twitter_link'
-    ));
-    
-    $wp_customize->add_setting('rokophotolite_behance_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_behance_link', array(
-        'label' => __('Behance URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 25,
-        'settings' => 'rokophotolite_behance_link'
-    ));
-    
-    $wp_customize->add_setting('rokophotolite_dribbble_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_dribbble_link', array(
-        'label' => __('Dribbble URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 30,
-        'settings' => 'rokophotolite_dribbble_link'
-    ));
-    
-    $wp_customize->add_setting('rokophotolite_flickr_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_flickr_link', array(
-        'label' => __('Flickr URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 35,
-        'settings' => 'rokophotolite_flickr_link'
-    ));
-    
-    $wp_customize->add_setting('rokophotolite_googleplus_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_googleplus_link', array(
-        'label' => __('Google + URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 40,
-        'settings' => 'rokophotolite_googleplus_link'
-    ));
-    
-    $wp_customize->add_setting('rokophotolite_instagram_link', array(
-        'default' => '#',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'esc_url_raw'
-    ));
-
-    $wp_customize->add_control('rokophotolite_instagram_link', array(
-        'label' => __('Instagram URL', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 45,
-        'settings' => 'rokophotolite_instagram_link'
-    ));
-
-    $wp_customize->add_setting('rokophotolite_footer_copyrights', array(
-        'default' => '© Awesome Photography. All Rights Reserved',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'sanitize_text_field'
-    ));
-
-    $wp_customize->add_control('rokophotolite_footer_copyrights', array(
-        'label' => __('Footer Copyrights', 'rokophotolite'),
-        'section' => 'rokophotolite_footer_section',
-        'priority' => 50,
-        'settings' => 'rokophotolite_footer_copyrights'
-    ));
+function rokophoto_excerpt_length($length) {
+	global $post;
+	if ($post->post_type == 'portfolio')
+	return 15;
+	else
+	return 40;
 }
-add_action('customize_register', 'rokophotolite_customize_register');
+
+add_filter('excerpt_length', 'rokophoto_excerpt_length');

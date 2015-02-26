@@ -12,7 +12,7 @@
                 <?php endwhile; ?>
 
                 <!-- Pagination -->
-                <?php rokophotolite_pagination(); ?>
+                <?php rokophoto_pagination(); ?>
 
             <?php else : ?>
                 <?php get_template_part( 'content', 'none' ); ?>
