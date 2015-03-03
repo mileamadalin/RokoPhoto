@@ -23,7 +23,7 @@ $rokophoto_portfolio_count = get_theme_mod('rokophoto_portfolio_count', 9);
 
 	<?php $loop = new WP_Query( array( 'post_type' => 'portfolio', 'posts_per_page' => $rokophoto_portfolio_count ) ); ?>
 
-	<?php if ( $loop->have_posts() ) : $loop->the_post(); ?>
+	<?php if ( $loop->have_posts() ): ?>
 	
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
