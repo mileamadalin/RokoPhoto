@@ -54,7 +54,7 @@
     </section>
 
     <div id="footer-nav">  <!-- Copyright notice on the bottom -->
-      <span><?php $copyright = get_theme_mod('rokophoto_footer_copyrights', __( 'Awesome Photography. All Rights Reserved', 'rokophoto' )); if(!empty($copyright)) { echo $copyright; } ?> <br/> <a href="https://themeisle.com/themes/rokophoto/" target="_blank" rel="nofollow"><?php _e( 'RokoPhoto', 'rokophoto' ); ?></a> <?php _e(' powered by','rokophoto'); ?> <a href="https://wordpress.org/" target="_blank" rel="nofollow"> WordPress</a></span>
+      <span><?php $copyright = get_theme_mod('rokophoto_footer_copyrights', __( 'Rokophoto. All Rights Reserved', 'rokophoto' )); if(!empty($copyright)) { echo $copyright; } ?> <br/> <a href="https://themeisle.com/themes/rokophoto/" target="_blank" rel="nofollow"><?php _e( 'RokoPhoto', 'rokophoto' ); ?></a> <?php _e(' powered by','rokophoto'); ?> <a href="https://wordpress.org/" target="_blank" rel="nofollow"> WordPress</a></span>
     </div>
 
 <?php wp_footer(); ?>
